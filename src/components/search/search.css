@@ -1,0 +1,29 @@
+
+
+.serachBox{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    margin-top: 10px;
+}
+.serachBox >input{
+   padding: 8px;
+   outline: none;
+   
+   border:1px solid black;
+   /* background-color:var(--gray); */
+   border-radius: 10px;
+}
+.serachBox >button{
+    background-color: var(--blue);
+    color:var(--white);
+    padding:8px;
+    border:none;
+    border-radius: 10px;
+    
+}
+
+
+@media only screen and (min-width: 1024px) {
+    
+}

@@ -1,0 +1,103 @@
+.details {
+    position: relative;
+    overflow-y: hidden;
+  }
+  
+
+  
+  .moviedetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white);
+    z-index: 2;
+  }
+  
+  .moviedata {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .moviedata > p {
+    text-align: justify;
+  }
+  
+  .genere {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .genere > p {
+    border: 1px solid var(--gray);
+    padding: 5px;
+  }
+  
+  .detailsPoster > img {
+    border: 5px solid var(--gray);
+  }
+  
+  .cast {
+    color: white;
+    overflow: hidden;
+  }
+  
+  .castData {
+    height: 50vh;
+    overflow-y: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+   
+  }
+  
+  .castValue {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .castImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--gray);
+    text-align: center;
+    margin-top: 20px;
+    overflow: hidden;
+  }
+  
+  .castImage > img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  
+  @media only screen and (min-width: 1024px) {
+    .moviedetails {
+      flex-direction: row;
+      padding-left: 20%;
+      padding-right: 20%;
+      padding-top: 40px;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .cast {
+      padding-left: 20%;
+      padding-right: 20%;
+      margin-top: 40px;
+    }
+  }
+  

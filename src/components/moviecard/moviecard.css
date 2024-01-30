@@ -1,0 +1,39 @@
+.moviecardmain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border:1px solid var(--white);
+    /* box-shadow: white 2px 2px 20px 2px; */
+     padding: 20px;
+     padding-bottom: 20px;
+     color: white;
+     gap:20px;
+     width: 300px;
+  
+     /* width: fit-content; */
+}
+
+.showmore >button{
+    border: none;
+    background-color: var(--blue);
+    padding: 10px;
+    color:var(--white);
+    width: 100%;
+}
+.rating{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap:20px
+}
+
+.cardposter{
+    align-self: center;
+}
+
+@media only screen and (min-width: 1024px) {
+    .moviecardmain{
+        width: 400px;
+    }
+}
