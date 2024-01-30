@@ -1,0 +1,25 @@
+.navMain{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    background-color: var(--white);
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid var(--blue);
+    box-shadow:white 2px 2px 20px 1px;
+}
+.buttonTop{
+    border:none;
+    background-color: white;
+}
+
+.navMain > button{
+    border: none;
+    padding: 10px;
+    background-color: var(--white);
+}
+@media only screen and (min-width: 1024px) {
+    .navMain{
+        flex-direction: row;
+    }
+  }
