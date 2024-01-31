@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-
+import {Link} from 'react-router-dom'
 import MovieCard from '../../components/moviecard/MovieCard'
 // import './home.css'
 import Pagination from '../../components/pagination/Pagination'
@@ -57,15 +57,33 @@ function TopRated() {
     <div>
       <div className="homeMain">
         <div className="homeHead">
-          <h1>TopRated Movies</h1>
+          <h1>Top Rated Movies</h1>
         </div>
         <div className="popularMoviePoster">
-          {popularmovies?.map(movie => (
-            <MovieCard
-              key={movie.id}
-              data={movie}
-              showClick={handleShowClick}
-            />
+          {popularmovies?.map(data => (
+            <div className="moviecardmain">
+              <div className="cardposter">
+                <img
+                  src={`http://image.tmdb.org/t/p/w185${data.poster_path}`}
+                  alt={data.title}
+                />
+              </div>
+              <div className="rating">
+                <h3>{data.title}</h3>
+                <p>{data.vote_average} / 10</p>
+              </div>
+              <div className="showmore">
+                <button type="button">
+                  <Link
+                    to={`/details/${data.id}`}
+                    style={{color: 'white', textDecoration: 'none'}}
+                  >
+                    {' '}
+                    View Details
+                  </Link>
+                </button>
+              </div>
+            </div>
           ))}
         </div>
         <div>
