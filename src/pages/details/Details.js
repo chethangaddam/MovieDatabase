@@ -91,7 +91,7 @@ function Details() {
                       <img src={`${baseUrl}/original${data?.profile_path}`} />
                     </div>
                     <small>{data?.name}</small>
-                    <small>Character: {data?.name}</small>
+                    <small>Character: {data?.character}</small>
                   </div>
                 ))}
             </div>
