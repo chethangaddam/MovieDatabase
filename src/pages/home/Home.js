@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react'
+import {Link} from 'react-router-dom'
 import MovieCard from '../../components/moviecard/MovieCard'
 import './home.css'
 import Pagination from '../../components/pagination/Pagination'
@@ -29,10 +30,6 @@ function Home() {
     getData()
   }, [currentPage]) // Fetch data when currentPage changes
 
-  const handleShowClick = () => {
-    console.log('show Clicked')
-  }
-
   const handleNextClick = () => {
     setCurrentPage(currentPage + 1)
     console.log('next clicked')
@@ -53,12 +50,30 @@ function Home() {
           <h1>Popular Movies</h1>
         </div>
         <div className="popularMoviePoster">
-          {popularmovies?.map(movie => (
-            <MovieCard
-              key={movie.id}
-              data={movie}
-              showClick={handleShowClick}
-            />
+          {popularmovies?.map(data => (
+            <div className="moviecardmain">
+              <div className="cardposter">
+                <img
+                  src={`http://image.tmdb.org/t/p/w185${data.poster_path}`}
+                  alt={data.title}
+                />
+              </div>
+              <div className="rating">
+                <h3>{data.title}</h3>
+                <p>{data.vote_average} / 10</p>
+              </div>
+              <div className="showmore">
+                <button type="button">
+                  <Link
+                    to={`/details/${data.id}`}
+                    style={{color: 'white', textDecoration: 'none'}}
+                  >
+                    {' '}
+                    View Details
+                  </Link>
+                </button>
+              </div>
+            </div>
           ))}
         </div>
         <div>

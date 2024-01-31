@@ -8,7 +8,7 @@ function Serach() {
     <div>
       <div className="serachBox">
         <input
-          type="text"
+          type="search"
           placeholder="search for movie"
           onChange={e => setMovieName(e.target.value)}
         />
@@ -17,7 +17,7 @@ function Serach() {
             to={`/search/${movieName}`}
             style={{color: 'white', textDecoration: 'none'}}
           >
-            Serach
+            Search
           </Link>
         </button>
       </div>
