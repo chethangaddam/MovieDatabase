@@ -2,8 +2,6 @@ import './moviecard.css'
 import {Link} from 'react-router-dom'
 
 function MovieCard({data}) {
-  const baseUrl = 'http://image.tmdb.org/t/p'
-  const path = `${baseUrl}/w185${data.poster_path}`
   return (
     <div className="moviecardmain">
       <div className="cardposter">

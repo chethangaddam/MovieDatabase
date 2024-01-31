@@ -1,18 +1,10 @@
 import {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
-import MovieCard from '../../components/moviecard/MovieCard'
-// import './home.css'
 import Pagination from '../../components/pagination/Pagination'
 
 function TopRated() {
-  const [popularmovies, setPopularMovies] = useState([])
+  const [topRatedMovies, setTopRatedMovies] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
-
-  // const headers = {
-  //   accept: 'application/json',
-  //   Authorization:
-  //     'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMmUxY2QzNGE2MTJiZDlhMGQ1NjdlOGFkZTUyOGExZCIsInN1YiI6IjY1YjdlYTY2MGZiMTdmMDBjOTMzMDAwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Dc7h8-I4nTy9-Ftkse8bjSZdrpFBMdY54j7FH0GUdtI',
-  // }
 
   const getData = async () => {
     const url = `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${currentPage}`
@@ -24,27 +16,25 @@ function TopRated() {
       },
     }
 
-    fetch(url, options)
-      .then(res => res.json())
-      .then(json => {
-        setPopularMovies(json.results)
-      })
-      .catch(err => console.error('error:'))
+    try {
+      const response = await fetch(url, options)
+      if (response.ok) {
+        const json = await response.json()
+        setTopRatedMovies(json.results)
+      } else {
+        console.error('Error fetching data:', response.statusText)
+      }
+    } catch (error) {
+      console.error('Error:', error.message)
+    }
   }
 
   useEffect(() => {
     getData()
   }, [currentPage]) // Fetch data when currentPage changes
 
-  const handleShowClick = () => {
-    console.log('show Clicked')
-  }
-
   const handleNextClick = () => {
     setCurrentPage(currentPage + 1)
-    console.log('next clicked')
-    console.log(currentPage)
-    // getData()
   }
 
   const handlePrevClick = () => {
@@ -52,7 +42,7 @@ function TopRated() {
       setCurrentPage(currentPage - 1)
     }
   }
-  console.log(`popular movie is ${popularmovies}`)
+
   return (
     <div>
       <div className="homeMain">
@@ -60,25 +50,34 @@ function TopRated() {
           <h1>Top Rated Movies</h1>
         </div>
         <div className="popularMoviePoster">
-          {popularmovies?.map(data => (
-            <div className="moviecardmain">
+          {topRatedMovies?.map(data => (
+            <div className="moviecardmain" key={data.id}>
               <div className="cardposter">
-                <img
-                  src={`http://image.tmdb.org/t/p/w185${data.poster_path}`}
-                  alt={data.title}
-                />
-              </div>
-              <div className="rating">
-                <h3>{data.title}</h3>
-                <p>{data.vote_average} / 10</p>
-              </div>
-              <div className="showmore">
-                <button type="button">
+                {data.poster_path && (
+                  <img
+                    src={`http://image.tmdb.org/t/p/w185${data.poster_path}`}
+                    alt={data.title}
+                  />
+                )}
+                {data.title && <p>{data.title}</p>}
+                {data.vote_average && (
+                  <p style={{marginTop: '10px'}}>{data.vote_average} / 10</p>
+                )}
+                <button
+                  type="button"
+                  style={{
+                    color: 'white',
+                    border: 'none',
+                    padding: '5px',
+                    background: 'var(--blue)',
+                    width: '100%',
+                    marginTop: '10px',
+                  }}
+                >
                   <Link
                     to={`/details/${data.id}`}
                     style={{color: 'white', textDecoration: 'none'}}
                   >
-                    {' '}
                     View Details
                   </Link>
                 </button>

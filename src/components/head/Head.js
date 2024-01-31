@@ -14,18 +14,30 @@ function Head() {
         >
           <h2>MovieDB</h2>
         </button>
-        <Link
-          to="/upcoming"
-          style={{color: 'black', cursor: 'pointer', textDecoration: 'none'}}
-        >
-          Upcoming
-        </Link>
-        <Link
-          to="/top-rated"
-          style={{color: 'black', cursor: 'pointer', textDecoration: 'none'}}
-        >
-          Top-rated
-        </Link>
+        <button type="button">
+          <Link
+            to="/"
+            style={{color: 'black', cursor: 'pointer', textDecoration: 'none'}}
+          >
+            Popular
+          </Link>
+        </button>
+        <button type="button">
+          <Link
+            to="/upcoming"
+            style={{color: 'black', cursor: 'pointer', textDecoration: 'none'}}
+          >
+            Upcoming
+          </Link>
+        </button>
+        <button type="button">
+          <Link
+            to="/top-rated"
+            style={{color: 'black', cursor: 'pointer', textDecoration: 'none'}}
+          >
+            Top Rated
+          </Link>
+        </button>
 
         <div className="searchSection">
           <Serach />
